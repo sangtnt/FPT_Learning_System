@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FPT_Learning_System.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "List of Trainers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avartar)
+        </th>
+        <th colspan="3">
+            @Html.ActionLink("Create", "Create", null, new { @class="btn btn-block btn-primary" })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        <img src="@Html.DisplayNameFor(model => model.Avartar)" alt="Avartar" />
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-dark" })
+    </td>
+    <td>
+        @using (Html.BeginForm("Delete", "Trainer", new { Id = item.Id }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <button class="btn btn-block btn-danger" type="submit">Delete</button>
+        }
+    </td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-block btn-default" })
+    </td>
+</tr>
+    }
+
+</table>

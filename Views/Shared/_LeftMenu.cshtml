@@ -1,0 +1,75 @@
+﻿<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/Manager" class="brand-link">
+        <img src="~/Assets/dist/img/FptLogo.png" alt="FPT Logo" class="brand-image">
+        <span class="brand-text font-weight-light">FPT Education</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        
+        @Html.Partial("_Login")
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="/Manager/Trainer" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainer")){ 
+                            @:active
+                        }
+                       ">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Trainer
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Manager/TrainingStaff" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("TrainingStaff")){ 
+                            @:active
+                        }  
+                     ">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Training Staff
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Manager/Trainee" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainee")){ 
+                            @:active
+                        }   
+                    ">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Trainee
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Manager/CourseCategory" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Course Category
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Manager/Course" class="nav-link">
+                        <i class="nav-icon fas fa-edit"></i>
+                        <p>
+                            Course
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

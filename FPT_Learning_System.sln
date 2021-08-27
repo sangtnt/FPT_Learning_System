@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31605.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPT_Learning_System", "FPT_Learning_System.csproj", "{49853B66-6D32-4C5C-8D9C-5CC4E3D71423}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FPT_Learning_System.Tests", "..\FPT_Learning_System.Tests\FPT_Learning_System.Tests.csproj", "{B9BCFB4C-77EE-46BE-B12D-1534C1942FEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49853B66-6D32-4C5C-8D9C-5CC4E3D71423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49853B66-6D32-4C5C-8D9C-5CC4E3D71423}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49853B66-6D32-4C5C-8D9C-5CC4E3D71423}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49853B66-6D32-4C5C-8D9C-5CC4E3D71423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9BCFB4C-77EE-46BE-B12D-1534C1942FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9BCFB4C-77EE-46BE-B12D-1534C1942FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9BCFB4C-77EE-46BE-B12D-1534C1942FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9BCFB4C-77EE-46BE-B12D-1534C1942FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2C03EA4-5F86-4D47-AFFB-6F076CD7FBB4}
+	EndGlobalSection
+EndGlobal
