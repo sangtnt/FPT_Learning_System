@@ -100,5 +100,7 @@ C:\Users\sangt\source\repos\FPT_Learning_System\bin\Microsoft.Owin.Security.OAut
 C:\Users\sangt\source\repos\FPT_Learning_System\bin\Newtonsoft.Json.xml
 C:\Users\sangt\source\repos\FPT_Learning_System\bin\System.Web.Optimization.xml
 C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.csproj.AssemblyReference.cache
-C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.initdatabase.resources
+C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.updatedata.resources
 C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.csproj.GenerateResource.cache
+C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.updatecourse.resources
+C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.updatecoursefk.resources

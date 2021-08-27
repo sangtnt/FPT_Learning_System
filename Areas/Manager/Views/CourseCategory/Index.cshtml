@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FPT_Learning_System.Models.CourseCategory>
+
+@{
+    ViewBag.Title = "List Of Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<table class="table col-md-8">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th colspan="2">
+            @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-block btn-primary" })
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-md-10">
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-block btn-dark" })
+            </td>
+            <td>
+                @using (Html.BeginForm("Delete", "CourseCategory", new { Id = item.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-block btn-danger" type="submit">Delete</button>
+                }
+            </td>
+        </tr>
+    }
+
+</table>

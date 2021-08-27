@@ -2052,11 +2052,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Manager\Views\Courses\Create.cshtml" />
-    <Content Include="Areas\Manager\Views\Courses\Delete.cshtml" />
-    <Content Include="Areas\Manager\Views\Courses\Details.cshtml" />
-    <Content Include="Areas\Manager\Views\Courses\Edit.cshtml" />
-    <Content Include="Areas\Manager\Views\Courses\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\Delete.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\Details.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\Index.cshtml" />
@@ -2068,6 +2063,14 @@
     <Content Include="Areas\Manager\Views\Trainee\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\Edit.cshtml" />
     <Content Include="Areas\Manager\Views\TrainingStaff\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\CourseCategory\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\CourseCategory\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\CourseCategory\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Course\Create.cshtml" />
+    <Content Include="Areas\Manager\Views\Course\Edit.cshtml" />
+    <Content Include="Areas\Manager\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\Trainee\Details.cshtml" />
+    <Content Include="Areas\Manager\Views\TrainingStaff\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2087,7 +2090,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Areas\Manager\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Manager\Controllers\CourseCategoryController.cs" />
+    <Compile Include="Areas\Manager\Controllers\CourseController.cs" />
     <Compile Include="Areas\Manager\Controllers\TraineeController.cs" />
     <Compile Include="Areas\Manager\Controllers\TrainerController.cs" />
     <Compile Include="Areas\Manager\Controllers\TrainingStaffController.cs" />
@@ -2098,9 +2102,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202108270515342_init database.cs" />
-    <Compile Include="Migrations\202108270515342_init database.Designer.cs">
-      <DependentUpon>202108270515342_init database.cs</DependentUpon>
+    <Compile Include="Migrations\202108270813152_update data.cs" />
+    <Compile Include="Migrations\202108270813152_update data.Designer.cs">
+      <DependentUpon>202108270813152_update data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108270817566_update course.cs" />
+    <Compile Include="Migrations\202108270817566_update course.Designer.cs">
+      <DependentUpon>202108270817566_update course.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202108270822053_update course fk.cs" />
+    <Compile Include="Migrations\202108270822053_update course fk.Designer.cs">
+      <DependentUpon>202108270822053_update course fk.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -2290,7 +2302,6 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -2321,8 +2332,14 @@
     <Folder Include="Areas\Manager\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202108270515342_init database.resx">
-      <DependentUpon>202108270515342_init database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202108270813152_update data.resx">
+      <DependentUpon>202108270813152_update data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108270817566_update course.resx">
+      <DependentUpon>202108270817566_update course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202108270822053_update course fk.resx">
+      <DependentUpon>202108270822053_update course fk.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

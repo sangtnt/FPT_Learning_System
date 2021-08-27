@@ -52,7 +52,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Manager/CourseCategory" class="nav-link">
+                    <a href="/Manager/CourseCategory" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("CourseCategory")){ 
+                            @:active
+                        }     
+                    ">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Course Category
@@ -60,7 +64,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Manager/Course" class="nav-link">
+                    <a href="/Manager/Course" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Course")&&!Request.Url.PathAndQuery.Contains("Category")){ 
+                            @:active
+                        }  
+                     ">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Course

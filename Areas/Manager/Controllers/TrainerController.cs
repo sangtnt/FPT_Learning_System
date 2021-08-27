@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace FPT_Learning_System.Areas.Manager.Controllers
 {
+    [Authorize(Roles ="ROLE_TRAINING_STAFF, ROLE_ADMIN")]
     public class TrainerController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -163,6 +164,13 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
             {
                 return View(user);
             }
+        }
+
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            var user = UserManager.FindById(id);
+            return View(user);
         }
     }
 }

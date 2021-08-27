@@ -1,195 +1,78 @@
 ﻿@model FPT_Learning_System.Models.ApplicationUser
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h3>@ViewBag.Title</h3>
+<div class="row">
+    <div class="col-md-3">
 
-<h2>Details</h2>
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg"
+                         alt="User profile picture">
+                </div>
 
-<div>
-    <h4>ApplicationUser</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+                <h3 class="profile-username text-center">
+                    @Model.FirstName @Model.LastName
+                </h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+                <p class="text-muted text-center">Birthday: @Model.DateOfBirth.ToString("dd MMMM yyyy")</p>
+                @using (Html.BeginForm("Delete", "Trainer", new { Id = Model.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-block btn-danger" type="submit">Delete</button>
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- About Me Box -->
+        <!-- /.card -->
+    </div>
+    <div class="card card-primary col-md-9">
+        <div class="card-header">
+            <h3 class="card-title">Information</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <strong><i class="fas fa-mail-bulk mr-1"></i> Mail</strong>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+            <p class="text-muted">
+                @Model.Email
+            </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+            <hr>
+            <strong><i class="fas fa-phone mr-1"></i> Phone Number</strong>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
+            <p class="text-muted">
+                @Model.PhoneNumber
+            </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
+            <hr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Avartar)
-        </dt>
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> Working Place</strong>
 
-        <dd>
-            @Html.DisplayFor(model => model.Avartar)
-        </dd>
+            <p class="text-muted">@Model.WorkingPlace</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Education)
-        </dt>
+            <hr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Education)
-        </dd>
+            <strong><i class="far fa-file-alt mr-1"></i>Trainer Type</strong>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MainProgrammingLanguages)
-        </dt>
+            <p class="text-muted">
+                @Model.Type
+            </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.MainProgrammingLanguages)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ToeicScore)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ToeicScore)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ExperienceDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ExperienceDetails)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkingPlace)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkingPlace)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PasswordHash)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PasswordHash)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecurityStamp)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecurityStamp)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TwoFactorEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEndDateUtc)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LockoutEnabled)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LockoutEnabled)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AccessFailedCount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AccessFailedCount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-    </dl>
+            <hr>
+            <p class="text-muted">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Back", "Index", new { id = Model.Id }, new { @class = "btn btn-default" })
+            </p>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.col -->
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

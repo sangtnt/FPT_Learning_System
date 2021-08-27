@@ -1,0 +1,100 @@
+﻿@model FPT_Learning_System.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>@ViewBag.Title</h3>
+<div class="row">
+    <div class="col-md-3">
+
+        <!-- Profile Image -->
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg"
+                         alt="User profile picture">
+                </div>
+
+                <h3 class="profile-username text-center">
+                    @Model.FirstName @Model.LastName
+                </h3>
+
+                <p class="text-muted text-center">Birthday: @Model.DateOfBirth.ToString("dd MMMM yyyy")</p>
+                @using (Html.BeginForm("Delete", "Trainee", new { Id = Model.Id }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <button class="btn btn-block btn-danger" type="submit">Delete</button>
+                }
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- About Me Box -->
+        <!-- /.card -->
+    </div>
+    <div class="card card-primary col-md-9">
+        <div class="card-header">
+            <h3 class="card-title">Information</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <strong><i class="fas fa-mail-bulk mr-1"></i> Mail</strong>
+
+            <p class="text-muted">
+                @Model.Email
+            </p>
+
+            <hr>
+            <strong><i class="fas fa-phone mr-1"></i> Phone Number</strong>
+
+            <p class="text-muted">
+                @Model.PhoneNumber
+            </p>
+
+            <hr>
+
+            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+
+            <p class="text-muted">@Model.Location</p>
+
+            <hr>
+
+            <strong><i class="fas fa-book mr-1"></i>Education</strong>
+
+            <p class="text-muted">
+                @Model.Education
+            </p>
+
+            <hr />
+
+            <strong><i class="fas fa-pencil-alt mr-1"></i>Main Programming Languages</strong>
+
+            <p class="text-muted">
+                @Model.MainProgrammingLanguages
+            </p>
+
+            <hr>
+            <strong><i class="fas fa-hand-paper mr-1"></i>Toeic Score</strong>
+
+            <p class="text-muted">
+                @Model.ToeicScore
+            </p>
+
+            <hr>
+            <strong><i class="far fa-file-alt mr-1"></i>Experience Details</strong>
+
+            <p class="text-muted">
+                @Model.ExperienceDetails
+            </p>
+
+            <hr>
+            <p class="text-muted">
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Back", "Index", new { id = Model.Id }, new { @class = "btn btn-default" })
+            </p>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.col -->
+</div>

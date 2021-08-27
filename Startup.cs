@@ -20,8 +20,6 @@ namespace FPT_Learning_System
     public partial class Startup
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
-        string defaultUserEmail = "sangtntgcs190019@fpt.edu.vn";
         RoleManager<IdentityRole> roleManager;
         UserManager<ApplicationUser> userManager;
         
@@ -60,11 +58,6 @@ namespace FPT_Learning_System
             if (result.Succeeded)
             {
                 userManager.AddToRole(user.Id, Roles.ROLE_ADMIN.ToString());
-            }
-            else
-            {
-                var e = new Exception("Coud not create default user");
-                throw e;
             }
         }
     }
