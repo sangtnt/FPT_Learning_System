@@ -14,6 +14,7 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
     [Authorize(Roles ="ROLE_TRAINING_STAFF, ROLE_ADMIN")]
     public class TrainerController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
@@ -32,7 +33,8 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
         // GET: Manager/Trainer
         public ActionResult Index()
         {
-            var trainers = UserManager.Users;
+            var role = RoleManager.FindByName(Roles.ROLE_TRAINER.ToString());
+            var trainers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id)).ToList();
             return View(trainers);
         }
 
@@ -63,8 +65,7 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddToRoleAsync(user.Id, Roles.ROLE_TRAINER.ToString());
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Trainer");
+                    return RedirectToAction("Details", new { id = user.Id });
                 }
                 AddErrors(result);
             }
@@ -145,7 +146,7 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
                 var result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new {id=user.Id });
                 }
                 AddErrors(result);
             }
@@ -171,6 +172,36 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
         {
             var user = UserManager.FindById(id);
             return View(user);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "ROLE_TRAINING_STAFF")]
+        public ActionResult AssignTrainerToCourse()
+        {
+            ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName");
+            var role = RoleManager.FindByName(Roles.ROLE_TRAINER.ToString());
+            var trainers = UserManager.Users.Where(u=>u.Roles.Any(r=>r.RoleId==role.Id));
+            ViewBag.UserId = new SelectList(trainers, "Id", "Email");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "ROLE_TRAINING_STAFF")]
+        public ActionResult AssignTrainerToCourse([Bind(Include = "UserId,CourseId")] UserCourse userCourse)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UserCourses.Add(userCourse);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName");
+            var role = RoleManager.FindByName(Roles.ROLE_TRAINER.ToString());
+            var trainers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id));
+            ViewBag.UserId = new SelectList(trainers, "Id", "Email");
+            return View(userCourse);
         }
     }
 }

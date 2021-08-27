@@ -19,11 +19,11 @@ namespace FPT_Learning_System.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
         public string FirstName { set; get; }
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
         public string LastName { set; get; }
-        [Display(Name = "DateOfBirth")]
+        [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { set; get; }
@@ -32,11 +32,11 @@ namespace FPT_Learning_System.Models
         public string Avartar { set; get; }
         [Display(Name ="Education")]
         public string Education { set; get; }
-        [Display(Name = "MainProgrammingLanguages")]
+        [Display(Name = "Main Programming Languages")]
         public string MainProgrammingLanguages { set; get; }
-        [Display(Name ="ToeicScore")]
+        [Display(Name ="Toeic Score")]
         public float ToeicScore { set; get; }
-        [Display(Name ="ExperienceDetails")]
+        [Display(Name ="Experience Details")]
         [DataType(DataType.MultilineText)]
         public string ExperienceDetails { set; get; }
         [Display(Name ="Location")]
@@ -45,10 +45,10 @@ namespace FPT_Learning_System.Models
         // Properties of Trainer
         [Display(Name ="Type")]
         public string Type { set; get; }
-        [Display(Name ="WorkingPlace")]
+        [Display(Name ="Working Place")]
         [DataType(DataType.MultilineText)]
         public string WorkingPlace { set; get; }
-        public virtual ICollection<Course> Courses { set; get; }
+        public virtual ICollection<UserCourse> Courses { set; get; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -68,23 +68,11 @@ namespace FPT_Learning_System.Models
         {
             return new ApplicationDbContext();
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ApplicationUser>()
-                .HasMany<Course>(s => s.Courses)
-                .WithMany(c => c.Users)
-                .Map(cs =>
-                {
-                    cs.MapLeftKey("UserId");
-                    cs.MapRightKey("CourseId");
-                    cs.ToTable("UserCourse");
-                });
-        }
 
         public System.Data.Entity.DbSet<FPT_Learning_System.Models.Course> Courses { get; set; }
 
         public System.Data.Entity.DbSet<FPT_Learning_System.Models.CourseCategory> CourseCategories { get; set; }
+        public System.Data.Entity.DbSet<FPT_Learning_System.Models.UserCourse> UserCourses { get; set; }
     }
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {

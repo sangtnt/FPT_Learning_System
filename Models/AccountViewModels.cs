@@ -130,12 +130,12 @@ namespace FPT_Learning_System.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -176,12 +176,12 @@ namespace FPT_Learning_System.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -196,16 +196,17 @@ namespace FPT_Learning_System.Models
 
         [Required]
         [Display(Name = "Toeic Score")]
+        [Range(0, 10, ErrorMessage = "Can only be between 0 .. 10")]
         public float ToeicScore { get; set; }
 
         [Required]
         [Display(Name = "Main Programming Language")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         public string MainProgrammingLanguage { get; set; }
 
         [Required]
         [Display(Name = "Education")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         public string Education { get; set; }
 
         [Required]
@@ -215,7 +216,7 @@ namespace FPT_Learning_System.Models
 
         [Required]
         [Display(Name = "Location")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         public string Location { get; set; }
 
         public string RoleName { get; set; }
@@ -240,12 +241,12 @@ namespace FPT_Learning_System.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 1)]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 

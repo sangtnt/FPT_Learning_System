@@ -104,3 +104,5 @@ C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Mi
 C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.csproj.GenerateResource.cache
 C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.updatecourse.resources
 C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.updatecoursefk.resources
+C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.removerelationshipbwcourseanduser.resources
+C:\Users\sangt\source\repos\FPT_Learning_System\obj\Debug\FPT_Learning_System.Migrations.addrelationshipbwcourseanduser.resources

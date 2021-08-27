@@ -10,6 +10,7 @@ using FPT_Learning_System.Models;
 
 namespace FPT_Learning_System.Areas.Manager.Controllers
 {
+    [Authorize(Roles = "ROLE_TRAINING_STAFF")]
     public class CourseController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

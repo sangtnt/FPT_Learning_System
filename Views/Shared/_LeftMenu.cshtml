@@ -9,72 +9,93 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        
+
         @Html.Partial("_Login")
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item">
-                    <a href="/Manager/Trainer" class="nav-link
-                        @if (Request.Url.PathAndQuery.Contains("Trainer")){ 
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_ADMIN"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/TrainingStaff" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("TrainingStaff"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                Training Staff
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && (User.IsInRole("ROLE_ADMIN") || User.IsInRole("ROLE_TRAINING_STAFF")))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Trainer" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainer"))
+                        {
                             @:active
                         }
                        ">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Trainer
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Manager/TrainingStaff" class="nav-link
-                        @if (Request.Url.PathAndQuery.Contains("TrainingStaff")){ 
+                            <i class="nav-icon fas fa-user-tie"></i>
+                            <p>
+                                Trainer
+                            </p>
+                        </a>
+                    </li>
+                }
+
+                @if (Request.IsAuthenticated && (User.IsInRole("ROLE_ADMIN") || User.IsInRole("ROLE_TRAINING_STAFF")))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Trainee" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainee"))
+                        {
                             @:active
-                        }  
-                     ">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Training Staff
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Manager/Trainee" class="nav-link
-                        @if (Request.Url.PathAndQuery.Contains("Trainee")){ 
-                            @:active
-                        }   
+                        }
                     ">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Trainee
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Manager/CourseCategory" class="nav-link
-                        @if (Request.Url.PathAndQuery.Contains("CourseCategory")){ 
+                            <i class="nav-icon fas fa-user-graduate"></i>
+                            <p>
+                                Trainee
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINING_STAFF"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/CourseCategory" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("CourseCategory"))
+                        {
                             @:active
-                        }     
+                        }
                     ">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Course Category
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Manager/Course" class="nav-link
-                        @if (Request.Url.PathAndQuery.Contains("Course")&&!Request.Url.PathAndQuery.Contains("Category")){ 
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Course Category
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINING_STAFF"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Course" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("Course"))
+                        {
                             @:active
-                        }  
+                        }
                      ">
-                        <i class="nav-icon fas fa-edit"></i>
-                        <p>
-                            Course
-                        </p>
-                    </a>
-                </li>
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Course
+                            </p>
+                        </a>
+                    </li>
+}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

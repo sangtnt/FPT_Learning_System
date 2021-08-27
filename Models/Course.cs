@@ -17,6 +17,6 @@ namespace FPT_Learning_System.Models
 
         public Guid CourseCategoryId { set; get; }
         public virtual CourseCategory CourseCategory { set; get; }
-        public virtual ICollection<ApplicationUser> Users { set; get; }
+        public virtual ICollection<UserCourse> Users { set; get; }
     }
 }

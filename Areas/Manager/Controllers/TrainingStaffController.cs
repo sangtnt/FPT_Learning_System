@@ -31,7 +31,8 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
         // GET: Manager/Trainer
         public ActionResult Index()
         {
-            var trainingStaffs = UserManager.Users;
+            var role = RoleManager.FindByName(Roles.ROLE_TRAINING_STAFF.ToString());
+            var trainingStaffs = UserManager.Users.Where(u => u.Roles.Any(r=>r.RoleId==role.Id)).ToList();
             return View(trainingStaffs);
         }
 
@@ -61,8 +62,7 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
                 if (result.Succeeded)
                 {
                     result = await UserManager.AddToRoleAsync(user.Id, Roles.ROLE_TRAINING_STAFF.ToString());
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "TrainingStaff");
+                    return RedirectToAction("Details", new { id = user.Id });
                 }
                 AddErrors(result);
             }
@@ -141,7 +141,7 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
                 var result = await UserManager.UpdateAsync(user);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = user.Id });
                 }
                 AddErrors(result);
             }

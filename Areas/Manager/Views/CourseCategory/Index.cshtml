@@ -6,20 +6,22 @@
 }
 
 <h2>@ViewBag.Title</h2>
-<table class="table col-md-8">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th colspan="2">
-            @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-block btn-primary" })
-        </th>
-    </tr>
+<table class="table table-bordered table-borderless col-md-12">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th colspan="2">
+                @Html.ActionLink("Create", "Create", null, new { @class = "btn btn-block btn-primary" })
+            </th>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td class="col-md-10">
+            <td class="col-md-8">
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
