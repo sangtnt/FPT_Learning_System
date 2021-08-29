@@ -2070,11 +2070,6 @@
     <Content Include="Areas\Manager\Views\Course\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Trainee\Details.cshtml" />
     <Content Include="Areas\Manager\Views\TrainingStaff\Details.cshtml" />
-    <Content Include="Areas\Manager\Views\UserCourse\Create.cshtml" />
-    <Content Include="Areas\Manager\Views\UserCourse\Delete.cshtml" />
-    <Content Include="Areas\Manager\Views\UserCourse\Details.cshtml" />
-    <Content Include="Areas\Manager\Views\UserCourse\Edit.cshtml" />
-    <Content Include="Areas\Manager\Views\UserCourse\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\AssignTrainerToCourse.cshtml" />
     <Content Include="Areas\Manager\Views\Trainee\AssignTraineeToCourse.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\ViewCourses.cshtml" />
