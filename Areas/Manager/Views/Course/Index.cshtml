@@ -37,7 +37,7 @@
         @using (Html.BeginForm("Delete", "Course", new { Id = item.Id }, FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            <button class="btn btn-block btn-danger" type="submit">Delete</button>
+            <button  onclick = "return confirm('Are you sure to delete')" class="btn btn-block btn-danger" type="submit">Delete</button>
         }
     </td>
 </tr>

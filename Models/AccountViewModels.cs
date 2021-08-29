@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace FPT_Learning_System.Models
@@ -117,6 +118,10 @@ namespace FPT_Learning_System.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Display(Name = "Avartar")]
+        [DefaultValue("https://picsum.photos/100/100?random=1")]
+        //Properties of Trainee
+        public string Avartar { set; get; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -163,6 +168,10 @@ namespace FPT_Learning_System.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+        [Display(Name = "Avartar")]
+        [DefaultValue("https://picsum.photos/100/100?random=1")]
+        //Properties of Trainee
+        public string Avartar { set; get; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -258,5 +267,10 @@ namespace FPT_Learning_System.Models
         [Display(Name = "Phone Number")]
         [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8)]
         public string Phone { get; set; }
+
+        [Display(Name = "Avartar")]
+        [DefaultValue("https://picsum.photos/100/100?random=1")]
+        //Properties of Trainee
+        public string Avartar { set; get; }
     }
 }

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<FPT_Learning_System.Models.UserCourse>
+
+@{
+    ViewBag.Title = "List Of Courses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table table-bordered table-borderless col-md-12">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseCategory.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-md-4">
+                @Html.DisplayFor(modelItem => item.Course.CourseCategory.CategoryName)
+            </td>
+            <td class="col-md-4">
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+        </tr>
+    }
+
+</table>

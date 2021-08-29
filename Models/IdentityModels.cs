@@ -28,8 +28,12 @@ namespace FPT_Learning_System.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { set; get; }
         [Display(Name = "Avartar")]
+        [DefaultValue("https://picsum.photos/100/100?random=1")]
         //Properties of Trainee
-        public string Avartar { set; get; }
+        public string Avartar {
+            set { }
+            get { return "https://www.minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg"; } 
+        }
         [Display(Name ="Education")]
         public string Education { set; get; }
         [Display(Name = "Main Programming Languages")]
@@ -51,6 +55,7 @@ namespace FPT_Learning_System.Models
         public virtual ICollection<UserCourse> Courses { set; get; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
+            this.Avartar = "https://picsum.photos/100/100?random=1";
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here

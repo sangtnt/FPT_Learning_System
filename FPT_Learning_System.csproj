@@ -2077,6 +2077,8 @@
     <Content Include="Areas\Manager\Views\UserCourse\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\AssignTrainerToCourse.cshtml" />
     <Content Include="Areas\Manager\Views\Trainee\AssignTraineeToCourse.cshtml" />
+    <Content Include="Areas\Manager\Views\Trainer\ViewCourses.cshtml" />
+    <Content Include="Areas\Manager\Views\Trainee\ViewCourses.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2101,11 +2103,12 @@
     <Compile Include="Areas\Manager\Controllers\TraineeController.cs" />
     <Compile Include="Areas\Manager\Controllers\TrainerController.cs" />
     <Compile Include="Areas\Manager\Controllers\TrainingStaffController.cs" />
-    <Compile Include="Areas\Manager\Controllers\UserCourseController.cs" />
     <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TraineeClientController.cs" />
+    <Compile Include="Controllers\TrainerClientController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2322,9 +2325,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -2335,6 +2335,13 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\TrainerClient\Index.cshtml" />
+    <Content Include="Views\TraineeClient\Index.cshtml" />
+    <Content Include="Views\TrainerClient\Edit.cshtml" />
+    <Content Include="Views\TrainerClient\Details.cshtml" />
+    <Content Include="Views\TraineeClient\Edit.cshtml" />
+    <Content Include="Views\TraineeClient\Details.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

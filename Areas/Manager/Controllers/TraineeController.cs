@@ -189,13 +189,11 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles ="ROLE_TRAINING_STAFF")]
-        public ActionResult AssignTraineeToCourse()
+        [Authorize(Roles = "ROLE_TRAINING_STAFF")]
+        public ActionResult AssignTraineeToCourse(string id)
         {
+            ViewBag.UserId = id;
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName");
-            var role = RoleManager.FindByName(Roles.ROLE_TRAINEE.ToString());
-            var trainers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id));
-            ViewBag.UserId = new SelectList(trainers, "Id", "Email");
             return View();
         }
 
@@ -206,16 +204,41 @@ namespace FPT_Learning_System.Areas.Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.UserCourses.Add(userCourse);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.UserCourses.Add(userCourse);
+                    db.SaveChanges();
+                    return RedirectToAction("ViewCourses", new { id = userCourse.UserId });
+                }
+                catch
+                {
+                    ViewBag.UserId = userCourse.UserId;
+                    ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName");
+                    ViewBag.Message = "This course've been already assigned to User";
+                    return View(userCourse);
+                }
             }
 
+            ViewBag.UserId = userCourse.UserId;
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName");
-            var role = RoleManager.FindByName(Roles.ROLE_TRAINEE.ToString());
-            var trainers = UserManager.Users.Where(u => u.Roles.Any(r => r.RoleId == role.Id));
-            ViewBag.UserId = new SelectList(trainers, "Id", "Email");
             return View(userCourse);
+        }
+        [HttpGet]
+        public ActionResult ViewCourses(string id)
+        {
+            var courses = db.UserCourses.Where(uc => uc.UserId == id).ToList();
+            var user = UserManager.FindById(id);
+            ViewBag.User = user;
+            return View(courses);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteUserCourse([Bind(Include = "UserId,CourseId")] UserCourse userCourse)
+        {
+            var target = db.UserCourses.Where(uc => uc.CourseId == userCourse.CourseId | uc.UserId == userCourse.UserId).FirstOrDefault();
+            db.UserCourses.Remove(target);
+            db.SaveChanges();
+            return RedirectToAction("ViewCourses", "Trainee", new { id = userCourse.UserId });
         }
     }
 }

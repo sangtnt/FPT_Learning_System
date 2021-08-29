@@ -204,16 +204,15 @@ namespace FPT_Learning_System.Controllers
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword()
         {
-            return code == null ? View("Error") : View();
+            return View();
         }
 
         //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -458,6 +457,34 @@ namespace FPT_Learning_System.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
+        [Authorize]
         #endregion
+        [HttpGet]
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = UserManager.FindByEmail(User.Identity.GetUserName());
+                var result = await UserManager.ChangePasswordAsync(user.Id, model.OldPassword, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    ModelState.Clear();
+                    ViewBag.Success = "Change Password Successfully";
+                    return View();
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error);
+                }
+            }
+            return View(model);
+        }
     }
 }

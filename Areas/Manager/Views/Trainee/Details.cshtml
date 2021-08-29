@@ -12,7 +12,7 @@
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg"
+                    <img class="profile-user-img img-fluid img-circle" src="@Model.Avartar"
                          alt="User profile picture">
                 </div>
 
@@ -24,7 +24,7 @@
                 @using (Html.BeginForm("Delete", "Trainee", new { Id = Model.Id }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <button class="btn btn-block btn-danger" type="submit">Delete</button>
+                    <button onclick = "return confirm('Are you sure to delete')" class="btn btn-block btn-danger" type="submit">Delete</button>
                 }
             </div>
             <!-- /.card-body -->
@@ -92,6 +92,10 @@
             <p class="text-muted">
                 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-dark" })
                 @Html.ActionLink("Back", "Index", new { id = Model.Id }, new { @class = "btn btn-default" })
+                @if (User.IsInRole("ROLE_TRAINING_STAFF"))
+                {
+                    @Html.ActionLink("Courses", "ViewCourses", new { id = Model.Id }, new { @class = "btn btn-outline-dark" })
+                }
             </p>
         </div>
         <!-- /.card-body -->
