@@ -69,7 +69,7 @@
             <hr>
             <p class="text-muted">
                 @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-dark" })
-                @Html.ActionLink("Back", "Index", new { id = Model.Id }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Back", "Index", new { @class = "btn btn-default" })
                 @if (User.IsInRole("ROLE_TRAINING_STAFF"))
                 {
                     @Html.ActionLink("Courses", "ViewCourses", new { id = Model.Id }, new { @class = "btn btn-outline-dark" })

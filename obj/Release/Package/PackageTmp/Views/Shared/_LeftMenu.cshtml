@@ -1,0 +1,169 @@
+﻿<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+        <img src="~/Assets/dist/img/FptLogo.png" alt="FPT Logo" class="brand-image">
+        <span class="brand-text font-weight-light">FPT Education</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+        @Html.Partial("_Login")
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_ADMIN"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/TrainingStaff" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("TrainingStaff"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                Training Staff
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && (User.IsInRole("ROLE_ADMIN") || User.IsInRole("ROLE_TRAINING_STAFF")))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Trainer" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainer"))
+                        {
+                            @:active
+                        }
+                       ">
+                            <i class="nav-icon fas fa-user-tie"></i>
+                            <p>
+                                Trainer
+                            </p>
+                        </a>
+                    </li>
+                }
+
+                @if (Request.IsAuthenticated && (User.IsInRole("ROLE_ADMIN") || User.IsInRole("ROLE_TRAINING_STAFF")))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Trainee" class="nav-link
+                        @if (Request.Url.PathAndQuery.Contains("Trainee"))
+                        {
+                            @:active
+                        }
+                    ">
+                            <i class="nav-icon fas fa-user-graduate"></i>
+                            <p>
+                                Trainee
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINING_STAFF"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/CourseCategory" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("CourseCategory"))
+                        {
+                            @:active
+                        }
+                    ">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>
+                                Course Category
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINING_STAFF"))
+                {
+                    <li class="nav-item">
+                        <a href="/Manager/Course" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("Course"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Course
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINER"))
+                {
+                    <li class="nav-item">
+                        <a href="/TrainerClient" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("TrainerClient"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Assigned Courses
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINER"))
+                {
+                    <li class="nav-item">
+                        <a href="/TrainerClient/Details" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("Details"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-user-alt"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+                }
+
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINEE"))
+                {
+                    <li class="nav-item">
+                        <a href="/TraineeClient" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("TraineeClient"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>
+                                Assigned Courses
+                            </p>
+                        </a>
+                    </li>
+                }
+                @if (Request.IsAuthenticated && User.IsInRole("ROLE_TRAINEE"))
+                {
+                    <li class="nav-item">
+                        <a href="/TraineeClient/Details" class="nav-link
+                        @if (Request.Url.PathAndQuery.Split('/').Last().Equals("Details"))
+                        {
+                            @:active
+                        }
+                     ">
+                            <i class="nav-icon fas fa-user-alt"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

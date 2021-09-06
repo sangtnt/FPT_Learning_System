@@ -52,7 +52,7 @@
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "dropdown-item" })
                 @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "dropdown-item" })
                 <div class="dropdown-divider"></div>
-                @using (Html.BeginForm("Delete", "Trainer", new { Id = item.Id }, FormMethod.Post))
+                @using (Html.BeginForm("Delete", "Trainee", new { Id = item.Id }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
                     <button onclick="return confirm('Are you sure to delete')" class="dropdown-item text-danger" type="submit">Delete</button>

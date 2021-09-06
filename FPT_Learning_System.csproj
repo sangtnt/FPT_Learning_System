@@ -2074,6 +2074,7 @@
     <Content Include="Areas\Manager\Views\Trainee\AssignTraineeToCourse.cshtml" />
     <Content Include="Areas\Manager\Views\Trainer\ViewCourses.cshtml" />
     <Content Include="Areas\Manager\Views\Trainee\ViewCourses.cshtml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
